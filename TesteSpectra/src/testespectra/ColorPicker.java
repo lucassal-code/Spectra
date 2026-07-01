@@ -59,9 +59,12 @@ public class ColorPicker extends JFrame implements ActionListener {
                 int red = corF.getRed();
                 int blue = corF.getBlue();
                 int green = corF.getGreen();
+                
+                int hex = corF.getRGB();
 
                 this.texto.setForeground(corF);
                 System.out.println("Vermelho: " + red + "; Verde: " + green + "; Azul: " + blue);
+                System.out.println(hex);
                 break;
                 
             case 2:
