@@ -4,16 +4,13 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class LeituraImagem extends JFrame implements ActionListener{
     
     JButton escImage;
-    JLabel imgEscolhida;
     
     LeituraImagem(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,10 +19,7 @@ public class LeituraImagem extends JFrame implements ActionListener{
         escImage = new JButton("Escolha a Imagem");
         escImage.addActionListener(this);
         
-        imgEscolhida = new JLabel("Placeholder");
-        
         this.add(escImage);
-        this.add(imgEscolhida);
         
         this.pack();
         this.setVisible(true);
@@ -35,18 +29,18 @@ public class LeituraImagem extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFileChooser chooser= new JFileChooser();
+        JFileChooser chooser= new JFileChooser(); //inicia o escolhedor de arquivo
 
-        int choice = chooser.showDialog(this, "Escolher");
+        int choice = chooser.showDialog(this, "Escolher"); //abre a caixa de diálogo para o usuário escolher
 
-        if (choice != JFileChooser.APPROVE_OPTION) return;
+        if (choice != JFileChooser.APPROVE_OPTION) return; //fecha se n escolher nada
 
+        //guarda o arquivo escolhido num File e o caminho pro arquivo num String
         File chosenFile = chooser.getSelectedFile();
         String caminho = chosenFile.getPath();
         
         System.out.println(caminho);
-        ImageIcon imgIcon = new ImageIcon(caminho);
         
-        imgEscolhida.setIcon(imgIcon);
+            MostrarImagem mostrarImg = new MostrarImagem(caminho);
     }
 }

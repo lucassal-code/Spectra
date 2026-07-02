@@ -13,7 +13,7 @@ public class TesteSpectra {
         switch(app){
             case 1:
                 ColorPicker colorpicker = new ColorPicker();
-            
+                
             case 2:
                 LeituraImagem lerImage = new LeituraImagem();
         }
