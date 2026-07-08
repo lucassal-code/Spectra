@@ -1,4 +1,4 @@
-package testespectra;
+package itensdeteste;
 
 import java.awt.Graphics;
 import java.awt.Image;

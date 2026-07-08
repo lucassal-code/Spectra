@@ -1,4 +1,4 @@
-package testespectra;
+package itensdeteste;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -42,5 +42,7 @@ public class LeituraImagem extends JFrame implements ActionListener{
         System.out.println(caminho);
         
             MostrarImagem mostrarImg = new MostrarImagem(caminho);
+            
+        
     }
 }

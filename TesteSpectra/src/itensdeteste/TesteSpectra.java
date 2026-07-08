@@ -1,4 +1,4 @@
-package testespectra;
+package itensdeteste;
 
 import java.util.Scanner;
 

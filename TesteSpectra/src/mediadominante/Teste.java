@@ -1,4 +1,4 @@
-package testespectra;
+package mediadominante;
 
 // Source - https://stackoverflow.com/a/10530562
 // Posted by Zaz Gmy
@@ -17,14 +17,18 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 
+//por algum motivo mudar de pc fez funcionar
 
+//ainda dando erro ao scanear o preto
 public class Teste {
 
     public static void main(String args[]) throws Exception {
-        File file = new File("‪C:\\Users\\0081998\\Downloads\\teste.jpg");
+        //pega a imagem
+        File file = new File("C:\\Users\\0081998\\Documents\\ImagensTeste\\teste2.jpg");
         ImageInputStream is = ImageIO.createImageInputStream(file);
         Iterator iter = ImageIO.getImageReaders(is);
 
+        //se n tiver entrada, retorna que nao foi possivel carregar
         if (!iter.hasNext())
         {
             System.out.println("Cannot load the specified file "+ file);
@@ -38,6 +42,7 @@ public class Teste {
         int height = image.getHeight();
         int width = image.getWidth();
 
+        //mapeia a imagem a partir da leitura feita acima
         Map m = new HashMap();
         for(int i=0; i < width ; i++)
         {
@@ -45,7 +50,8 @@ public class Teste {
             {
                 int rgb = image.getRGB(i, j);
                 int[] rgbArr = getRGBArr(rgb);                
-                // Filter out grays....                
+                // Filter out grays....   
+                System.out.println(rgbArr);
                 if (!isGray(rgbArr)) {                
                         Integer counter = (Integer) m.get(rgb);   
                         if (counter == null)
@@ -62,13 +68,19 @@ public class Teste {
 
     public static String getMostCommonColour(Map map) {
         List list = new LinkedList(map.entrySet());
+        //System.out.println(list);
         Collections.sort(list, new Comparator() {
               public int compare(Object o1, Object o2) {
                 return ((Comparable) ((Map.Entry) (o1)).getValue())
                   .compareTo(((Map.Entry) (o2)).getValue());
               }
         });    
-        Map.Entry me = (Map.Entry )list.get(list.size()-1);
+        //System.out.println(list);
+        Map.Entry me = (Map.Entry )list.get(list.size()-1); //erro
+        System.out.println(list);
+        if (!list.isEmpty()) {
+            me = (Map.Entry) list.getLast();
+        }
         int[] rgb= getRGBArr((Integer)me.getKey());
         return Integer.toHexString(rgb[0])+" "+Integer.toHexString(rgb[1])+" "+Integer.toHexString(rgb[2]);        
     }    
@@ -85,7 +97,7 @@ public class Teste {
         int rgDiff = rgbArr[0] - rgbArr[1];
         int rbDiff = rgbArr[0] - rgbArr[2];
         // Filter out black, white and grays...... (tolerance within 10 pixels)
-        int tolerance = 10;
+        int tolerance = 15;
         if (rgDiff > tolerance || rgDiff < -tolerance) 
             if (rbDiff > tolerance || rbDiff < -tolerance) { 
                 return false;
