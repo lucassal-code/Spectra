@@ -1,4 +1,5 @@
-package controller;
+package model;
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,14 +8,9 @@ import java.util.Map;
 
 public class NomeDasCores {
 
-    public static void main(String[] args) {
-        
-        /*Buscar novaTela = new Buscar();
-        novaTela.setVisible(true);*/
+    public String resultado(String hexadecimal) {
         
         Map<String, String> lista = new HashMap<>();
-        //Scanner provisorio = new Scanner(System.in);
-        String hexadecimal = provisorio.next();
         
         LerArquivo(lista);
         
@@ -30,15 +26,14 @@ public class NomeDasCores {
             }
         }
         
-        System.out.println("Hexadecimal mais próximo: " + corMaisProxima);
-        System.out.println("Nome da cor: " + lista.get(corMaisProxima));
+        return corMaisProxima;
     }
     
     
     //Métodos
     
     public static void LerArquivo(Map<String, String> mapa) { //Puxa o documento e coloca seus conteúdos em um map
-        File lista = new File("C:\\Users\\0081998\\Downloads\\nomeDasCores\\nomeDasCores\\src\\nomedascores\\cores.txt");
+        File lista = new File("src/model/cores.txt");
         try (Scanner scanner = new Scanner(lista)) {
             while(scanner.hasNextLine()) {
                 String linha = scanner.nextLine();
