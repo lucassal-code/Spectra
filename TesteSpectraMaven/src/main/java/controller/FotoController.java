@@ -8,16 +8,18 @@ import javax.imageio.ImageIO;
 
 public class FotoController {
 
-    public FotoController() throws IOException {
-        // get default webcam and open it
+    public File FotoController() throws IOException {
+        //abre a camera default
 	Webcam webcam = Webcam.getDefault();
 	webcam.open();
 
-	// get image
-	BufferedImage image = webcam.getImage();
+	//pega a imagem
+	BufferedImage img = webcam.getImage();
 
-	// save image to PNG file
-	ImageIO.write(image, "PNG", new File("test.png"));
+	//salva a imagem num png
+        File arquivo = new File("foto.png");
+	ImageIO.write(img, "PNG", arquivo);
+        
+        return arquivo; 
     }
-    
 }
