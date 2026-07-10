@@ -14,7 +14,7 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 
-public class CorDominante {
+public class CorDomModel {
     
     public String hexadec(File arquivo, FotoModel foto) throws IOException{
         

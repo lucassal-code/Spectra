@@ -6,13 +6,13 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NomeDasCores {
+public class NomeCoresModel {
 
     public String resultado(String hexadecimal) {
         
         Map<String, String> lista = new HashMap<>();
         
-        LerArquivo(lista);
+        lerArquivo(lista);
         
         String corMaisProxima = null;
         double menorDistancia = Double.MAX_VALUE;
@@ -27,12 +27,11 @@ public class NomeDasCores {
         }
         
         return corMaisProxima;
-    }
-    
+    }  
     
     //Métodos
     
-    public static void LerArquivo(Map<String, String> mapa) { //Puxa o documento e coloca seus conteúdos em um map
+    public void lerArquivo(Map<String, String> mapa) { //Puxa o documento e coloca seus conteúdos em um map
         File lista = new File("src/model/cores.txt");
         try (Scanner scanner = new Scanner(lista)) {
             while(scanner.hasNextLine()) {
@@ -45,11 +44,11 @@ public class NomeDasCores {
         }
     }
     
-    public static String rgbParaHex(int rR, int gG, int bB) {
+    public String rgbParaHex(int rR, int gG, int bB) {
         return String.format("#%02X%02X%02X", rR, gG, bB);
     }
     
-    public static int[] hexParaRgb(String hex) {
+    public int[] hexParaRgb(String hex) {
         if (hex.startsWith("#")) {
             hex = hex.substring(1);
         }
@@ -61,7 +60,7 @@ public class NomeDasCores {
         return new int[]{r, g, b};
     }
     
-    public static double calcDistancia(String cor, String corTemporaria) {
+    public double calcDistancia(String cor, String corTemporaria) {
         int[] rgb1 = hexParaRgb(cor);
         int[] rgb2 = hexParaRgb(corTemporaria);
 
@@ -72,7 +71,7 @@ public class NomeDasCores {
         return Math.sqrt(dr * dr + dg * dg + db * db);
     }
     
-    public static String encontrarCorMaisProxima(String hexadecimal, Map<String, String> lista) {
+    public String encontrarCorMaisProxima(String hexadecimal, Map<String, String> lista) {
         if (hexadecimal.startsWith("#")) {
             hexadecimal = hexadecimal.substring(1);
         }
@@ -90,6 +89,4 @@ public class NomeDasCores {
         }
         return corMaisProxima;
     }
-    
-    
 }

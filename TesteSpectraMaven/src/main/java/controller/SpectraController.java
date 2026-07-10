@@ -1,12 +1,12 @@
 package controller;
 
-import model.CorDominante;
+import model.CorDomModel;
 import model.FotoModel;
 import java.io.File;
 import java.io.IOException;
-import model.NomeDasCores;
+import model.NomeCoresModel;
 
-public class TesteSpectraMaven {
+public class SpectraController {
     
     //tirar uma foto e salvar
 
@@ -14,10 +14,10 @@ public class TesteSpectraMaven {
         FotoModel foto = new FotoModel();
         File arquivo = foto.TirarFoto();
         
-        CorDominante c = new CorDominante();
+        CorDomModel c = new CorDomModel();
         String hexadec = c.hexadec(arquivo, foto);
         
-        NomeDasCores nc = new NomeDasCores();
+        NomeCoresModel nc = new NomeCoresModel();
         String corMaisProx = nc.resultado(hexadec);
         
         System.out.println("Hexadecimal mais próximo: " + corMaisProx);
