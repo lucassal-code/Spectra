@@ -1,0 +1,7 @@
+controller\SpectraApplication.class
+controller\SpectraController.class
+model\CorDomModel.class
+model\FotoModel.class
+model\CorDomModel$1.class
+model\NomeCoresModel.class
+model\CorModel.class
